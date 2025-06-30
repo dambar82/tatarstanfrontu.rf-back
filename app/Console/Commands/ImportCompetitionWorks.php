@@ -62,7 +62,7 @@ class ImportCompetitionWorks extends Command
                         'title' => $row[4] ?? '',
                         'type' => $type,
                         'fio_participant' => $row[1] ?? '',
-                        'age' => is_numeric($row[6] ?? null) ? (int)$row[6] : null,
+                        'age' => $row[6] ?? '',
                         'city' => $row[7] ?? '',
                         'district_id' => null,
                         'educational_institution' => $row[8] ?? null,
