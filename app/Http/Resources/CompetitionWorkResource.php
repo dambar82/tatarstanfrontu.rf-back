@@ -16,9 +16,13 @@ class CompetitionWorkResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'title' => $this->title,
             'name' => $this->fio_participant,
+            'age' => $this->age,
+            'city' => $this->city,
             'from' => $this->educational_institution,
             'image' => $this->file ? asset('storage/images/' . $this->file) : null,
+            'curator' => $this->fio_curator
         ];
     }
 }
