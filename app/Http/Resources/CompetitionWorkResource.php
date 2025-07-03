@@ -15,14 +15,14 @@ class CompetitionWorkResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $location = District::find($this->distrct_id);
+        $location = District::find($this->district_id)->title;
 
         return [
             'id' => $this->id,
             'title' => $this->title,
             'author' => $this->fio_participant,
             'age' => $this->age,
-            'location' => $location->title,
+            'location' => $location,
             'curator' => $this->fio_curator,
             'city' => $this->city,
             'organization' => $this->organization,
