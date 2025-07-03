@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CompetitionWorkResource;
 use App\Models\CompetitionWork as CompetitionWorkModel;
+use App\Models\District;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class CompetitionWork extends Controller
+class CompetitionWorkController extends Controller
 {
     public function allWorks(): AnonymousResourceCollection
     {
@@ -20,26 +21,18 @@ class CompetitionWork extends Controller
         return new CompetitionWorkResource($work);
     }
 
-    public function getAllPaintings(): AnonymousResourceCollection
+    /**
+     * @return array
+     */
+    public function getDistricts(): array
     {
-        $works = CompetitionWorkModel::query()
-            ->where('type', 'painting')
-            ->paginate(50);
-        return CompetitionWorkResource::collection($works);
+        return District::all()->select('id', 'title')->toArray();
     }
 
-    public function getAllResearches(): AnonymousResourceCollection
+    public function getWorksByDistrict(int $district_id): AnonymousResourceCollection
     {
         $works = CompetitionWorkModel::query()
-            ->where('type', 'research')
-            ->paginate(50);
-        return CompetitionWorkResource::collection($works);
-    }
-
-    public function getAllEssays(): AnonymousResourceCollection
-    {
-        $works = CompetitionWorkModel::query()
-            ->where('type', 'essay')
+            ->where('district_id', $district_id)
             ->paginate(50);
         return CompetitionWorkResource::collection($works);
     }
