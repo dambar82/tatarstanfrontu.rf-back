@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,15 +15,19 @@ class CompetitionWorkResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $location = District::find($this->distrct_id);
+
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'name' => $this->fio_participant,
+            'author' => $this->fio_participant,
             'age' => $this->age,
+            'location' => $location->title,
+            'curator' => $this->fio_curator,
             'city' => $this->city,
-            'from' => $this->educational_institution,
+            'organization' => $this->organization,
             'image' => $this->file ? asset('storage/images/' . $this->file) : null,
-            'curator' => $this->fio_curator
+            'place' => $this->place
         ];
     }
 }

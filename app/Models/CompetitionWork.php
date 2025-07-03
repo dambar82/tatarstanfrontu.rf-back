@@ -15,9 +15,10 @@ class CompetitionWork extends Model
         'age',
         'city',
         'district_id',
-        'educational_institution',
+        'organization',
         'fio_curator',
-        'file'
+        'file',
+        'place'
     ];
 }
 
