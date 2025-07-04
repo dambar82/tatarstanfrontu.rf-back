@@ -23,10 +23,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-<FilesMatch "\.(pdf)$">
+<FilesMatch "\.(pdf|jpg|jpeg|png|gif|docx|doc|ppt|pptx|rtf|bmp|odt|tif|heic)$">
     <IfModule mod_headers.c>
         Header always set Access-Control-Allow-Origin "https://xn--80aaa6caflcggbdfok.xn--p1ai"
         Header always set Access-Control-Allow-Methods "GET, OPTIONS"
         Header always set Access-Control-Allow-Headers "*"
     </IfModule>
 </FilesMatch>
+
