@@ -27,7 +27,8 @@ class CompetitionWorkResource extends JsonResource
             'city' => $this->city,
             'organization' => $this->organization,
             'image' => $this->file ? asset('storage/images/' . $this->file) : null,
-            'place' => $this->place
+            'place' => $this->place,
+            'diploma' => asset('storage/diplomas/' . $this->id . '.jpg')
         ];
     }
 }
